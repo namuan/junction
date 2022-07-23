@@ -7,12 +7,12 @@ from PyQt5.QtWidgets import QMainWindow, qApp
 
 from app.controllers import (
     MainWindowController,
-    ConfigController,
     ShortcutController,
-    ScratchPadController,
 )
 from app.generated.MainWindow_ui import Ui_MainWindow
-from app.settings.app_settings import app
+from app.sections.notes.notes_view import NotesView
+
+from app.settings.app_world import AppWorld
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -22,14 +22,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         self.setupUi(self)
 
-        # Initialise controllers
-        self.main_controller = MainWindowController(self, app)
-        self.config_controller = ConfigController(self, app)
-        self.shortcut_controller = ShortcutController(self, app)
-        self.scratch_pad_controller = ScratchPadController(self, app)
+        self.world = AppWorld()
 
-        # Initialise components
-        self.shortcut_controller.init_items()
+        # Initialise controllers
+        self.main_controller = MainWindowController(self, self.world)
+        self.shortcut_controller = ShortcutController(self, self.world)
+        self.notes_view = NotesView(self)
 
         # Initialise Sub-Systems
         sys.excepthook = MainWindow.log_uncaught_exceptions

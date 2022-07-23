@@ -1,13 +1,14 @@
 import logging
 
-from app.views.main_window import MainWindow
+from app.settings.app_world import AppWorld
 
 
 class MainWindowController:
-    def __init__(self, parent_window: MainWindow, app):
+    def __init__(self, parent_window, app):
         self.parent = parent_window
         self.initial_load = True
         self.app = app
+        self.world: AppWorld = self.parent.world
         self.init_app()
 
     def init_app(self):
@@ -35,4 +36,4 @@ class MainWindowController:
         self.on_first_load()
 
     def on_first_load(self):
-        self.parent.scratch_pad_controller.init()
+        self.world.started()
