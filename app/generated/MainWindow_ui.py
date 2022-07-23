@@ -84,7 +84,7 @@ class Ui_MainWindow(object):
         self.frameNotes.setObjectName("frameNotes")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.frameNotes)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.txtNotes = QtWidgets.QPlainTextEdit(self.frameNotes)
+        self.txtNotes = QtWidgets.QTextEdit(self.frameNotes)
         self.txtNotes.setObjectName("txtNotes")
         self.verticalLayout_4.addWidget(self.txtNotes)
         self.verticalLayout_5.addWidget(self.splitter_3)
@@ -170,7 +170,11 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Junction"))
         self.lblTicketHeading.setText(_translate("MainWindow", "Ticket Heading"))
         self.txtTicketDescription.setPlainText(_translate("MainWindow", "Ticket description here ..."))
-        self.txtNotes.setPlainText(_translate("MainWindow", "Notes ..."))
+        self.txtNotes.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'.SF NS Text\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Notes 2</p></body></html>"))
         self.lblTodos.setText(_translate("MainWindow", "Todos"))
         self.btnAddTodo.setText(_translate("MainWindow", "Add"))
         self.lblApplications.setText(_translate("MainWindow", "Applications"))

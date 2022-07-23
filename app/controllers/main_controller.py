@@ -1,8 +1,10 @@
 import logging
 
+from app.views.main_window import MainWindow
+
 
 class MainWindowController:
-    def __init__(self, parent_window, app):
+    def __init__(self, parent_window: MainWindow, app):
         self.parent = parent_window
         self.initial_load = True
         self.app = app
