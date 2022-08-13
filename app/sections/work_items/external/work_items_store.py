@@ -2,7 +2,7 @@ import logging
 import time
 
 from app.core.worker_pool import pool, LongRunningProcess
-from app.sections.work_items.external.work_itemsapi_type import WorkItemsApiType
+from app.sections.work_items.external.work_items_api_type import WorkItemsApiType
 from app.sections.work_items.work_item_entity import WorkItemEntity
 
 
