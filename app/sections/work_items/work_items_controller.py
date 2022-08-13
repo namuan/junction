@@ -11,5 +11,14 @@ class WorkItemsController:
         self.world.events.app_started.connect(self.on_app_started)
 
     def on_app_started(self):
-        work_items = self.external_store.fetch_items()
-        self.view.render(work_items)
+        params = {
+            "on_success": self.on_all_tickets_loaded,
+            "on_failure": self.on_all_tickets_failed
+        }
+        self.external_store.fetch_items(**params)
+
+    def on_all_tickets_loaded(self, work_items: dict):
+        self.view.render(work_items.get("result"))
+
+    def on_all_tickets_failed(self, error):
+        pass
