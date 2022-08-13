@@ -9,6 +9,7 @@ from app.controllers import (
     MainWindowController,
     ShortcutController,
 )
+from app.sections.work_items.work_items_controller import WorkItemsController
 from app.generated.MainWindow_ui import Ui_MainWindow
 from app.sections.notes.notes_controller import NotesController
 from app.settings.app_world import AppWorld
@@ -21,12 +22,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         self.setupUi(self)
 
-        self.world = AppWorld()
+        world = AppWorld()
 
         # Initialise controllers
-        self.main_controller = MainWindowController(self, self.world)
-        self.shortcut_controller = ShortcutController(self, self.world)
-        self.notes_controller = NotesController(self, self.world)
+        self.main_controller = MainWindowController(self, world)
+        self.shortcut_controller = ShortcutController(self, world)
+        self.notes_controller = NotesController(self, world)
+        self.work_items_controller = WorkItemsController(self, world)
 
         # Initialise Sub-Systems
         sys.excepthook = MainWindow.log_uncaught_exceptions

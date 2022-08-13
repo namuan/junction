@@ -78,7 +78,7 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QListView" name="viewTicketList"/>
+             <widget class="QListWidget" name="work_items_widget"/>
             </item>
            </layout>
           </widget>
