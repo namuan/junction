@@ -16,6 +16,7 @@ class WorkItemsController:
             "on_failure": self.on_all_tickets_failed
         }
         self.external_store.fetch_items(**params)
+        # self.external_store.fetch_work_item(**params)
 
     def on_all_tickets_loaded(self, work_items: dict):
         self.view.render(work_items.get("result"))
