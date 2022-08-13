@@ -19,7 +19,10 @@ class NotesStore(BaseStore):
         super().__init__(data_store)
 
     def get_scratch_note(self):
-        pass
+        logging.info("Get Notes")
+        table = self.ds.table_for(NOTES_RECORD_TYPE)
+        notes_row = table.find_one(name=NOTES_RECORD_TYPE)
+        return NotesEntity.from_json_str(notes_row["object"])
 
     def update_scratch_note(self, plain_text_note):
         note_entity = NotesEntity(

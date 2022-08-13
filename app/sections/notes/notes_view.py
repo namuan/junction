@@ -1,7 +1,7 @@
 from PyQt5 import QtCore
 from PyQt5.QtCore import QObject, QEvent
 
-from app.sections.notes.notes_controller import NotesController
+from app.data.notes_store import NotesEntity
 
 
 class NotesEvents(QObject):
@@ -18,16 +18,16 @@ class NotesEvents(QObject):
 
 
 class NotesView:
-    def __init__(self, parent):
-        self.parent = parent
-        self.controller = NotesController(self, self.parent.world)
-        self.events = NotesEvents(self.parent, self.on_focus_out)
+    def __init__(self, world, txtNotes):
+        self.world = world
+        self.txtNotes = txtNotes
+        self.events = NotesEvents(txtNotes, self.on_focus_out)
 
         # installing event filter
-        self.parent.txtNotes.installEventFilter(self.events)
+        self.txtNotes.installEventFilter(self.events)
 
     def on_focus_out(self):
-        self.controller.save_scratch_pad(self.parent.txtNotes.toPlainText())
+        self.world.events.txt_notes_focus_out.emit(self.txtNotes.toPlainText())
 
-    def render(self, scratch_note):
-        self.parent.txtNotes.setPlainText(scratch_note)
+    def render(self, scratch_note:NotesEntity):
+        self.txtNotes.setPlainText(scratch_note.content)

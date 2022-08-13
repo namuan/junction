@@ -1,7 +1,7 @@
 import logging
+import sys
 import traceback
 
-import sys
 from PyQt5.QtGui import QCloseEvent
 from PyQt5.QtWidgets import QMainWindow, qApp
 
@@ -10,8 +10,7 @@ from app.controllers import (
     ShortcutController,
 )
 from app.generated.MainWindow_ui import Ui_MainWindow
-from app.sections.notes.notes_view import NotesView
-
+from app.sections.notes.notes_controller import NotesController
 from app.settings.app_world import AppWorld
 
 
@@ -27,7 +26,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Initialise controllers
         self.main_controller = MainWindowController(self, self.world)
         self.shortcut_controller = ShortcutController(self, self.world)
-        self.notes_view = NotesView(self)
+        self.notes_controller = NotesController(self, self.world)
 
         # Initialise Sub-Systems
         sys.excepthook = MainWindow.log_uncaught_exceptions
