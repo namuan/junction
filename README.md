@@ -1,5 +1,7 @@
 # Junction :: One application for managing your development process  
- 
+
+![](docs/images/junction.png) 
+
 ### Some features:
 
 🚀 View JIRA/Rally/Github tickets
