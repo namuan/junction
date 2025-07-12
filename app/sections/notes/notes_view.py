@@ -1,5 +1,5 @@
-from PyQt5 import QtCore
-from PyQt5.QtCore import QObject, QEvent
+from PyQt6 import QtCore
+from PyQt6.QtCore import QObject, QEvent
 
 from app.data.notes_store import NotesEntity
 
@@ -11,7 +11,7 @@ class NotesEvents(QObject):
         self.on_focus_out = on_focus_out
 
     def eventFilter(self, source: QObject, event: QEvent):
-        if event.type() == QtCore.QEvent.FocusOut:
+        if event.type() == QtCore.QEvent.Type.FocusOut:
             self.on_focus_out()
 
         return super().eventFilter(source, event)
@@ -30,4 +30,5 @@ class NotesView:
         self.world.events.txt_notes_focus_out.emit(self.txtNotes.toPlainText())
 
     def render(self, scratch_note:NotesEntity):
-        self.txtNotes.setPlainText(scratch_note.content)
+        if scratch_note:
+            self.txtNotes.setPlainText(scratch_note.content)

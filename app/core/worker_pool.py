@@ -1,6 +1,6 @@
 import logging
 
-from PyQt5.QtCore import QThreadPool, QRunnable, pyqtSlot, QObject, pyqtSignal
+from PyQt6.QtCore import QThreadPool, QRunnable, pyqtSlot, QObject, pyqtSignal
 
 
 class LongRunningProcessOutput(QObject):

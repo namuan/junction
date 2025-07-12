@@ -1,7 +1,7 @@
 from typing import List
 
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QListWidget
+from PyQt6 import QtWidgets
+from PyQt6.QtWidgets import QListWidget
 
 from app.sections.work_items.work_item_entity import WorkItemEntity
 from app.widgets.work_item import WorkItemWidget

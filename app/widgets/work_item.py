@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets, QtGui
+from PyQt6 import QtWidgets, QtGui
 
 from app.sections.work_items.work_item_entity import WorkItemEntity
 
@@ -20,8 +20,8 @@ class WorkItemWidget(QtWidgets.QWidget):
         self.lbl_ticket_status.setFlat(True)
         self.lbl_ticket_status.setDisabled(True)
         self.lbl_ticket_status.setSizePolicy(
-            QtWidgets.QSizePolicy.MinimumExpanding,
-            QtWidgets.QSizePolicy.MinimumExpanding
+            QtWidgets.QSizePolicy.Policy.MinimumExpanding,
+            QtWidgets.QSizePolicy.Policy.MinimumExpanding
         )
         self.lbl_ticket_status.setStyleSheet('''
             QPushButton {

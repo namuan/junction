@@ -22,6 +22,8 @@ class NotesStore(BaseStore):
         logging.info("Get Notes")
         table = self.ds.table_for(NOTES_RECORD_TYPE)
         notes_row = table.find_one(name=NOTES_RECORD_TYPE)
+        if not notes_row:
+            return None
         return NotesEntity.from_json_str(notes_row["object"])
 
     def update_scratch_note(self, plain_text_note):

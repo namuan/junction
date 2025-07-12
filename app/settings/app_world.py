@@ -3,8 +3,8 @@ import logging.handlers
 from pathlib import Path
 from typing import Any, Union
 
-from PyQt5.QtCore import QSettings, QStandardPaths
-from PyQt5.QtWidgets import qApp
+from PyQt6.QtCore import QSettings, QStandardPaths
+from PyQt6.QtWidgets import QApplication
 
 from app.configuration.app_config import AppConfig
 from app.core.str_utils import str_to_bool
@@ -24,19 +24,19 @@ class AppWorld:
 
     def __init__(self):
         self.docs_location: Path = Path(
-            QStandardPaths.writableLocation(QStandardPaths.DocumentsLocation)
+            QStandardPaths.writableLocation(QStandardPaths.StandardLocation.DocumentsLocation)
         )
 
     def init(self):
-        self.app_name = qApp.applicationName().lower()
+        self.app_name = QApplication.instance().applicationName().lower()
         self.app_dir = Path(
-            QStandardPaths.writableLocation(QStandardPaths.AppConfigLocation)
+            QStandardPaths.writableLocation(QStandardPaths.StandardLocation.AppConfigLocation)
         )
         print(self.app_dir)
         self.app_dir.mkdir(exist_ok=True)
         settings_file = f"{self.app_name}.ini"
         self.settings = QSettings(
-            self.app_dir.joinpath(settings_file).as_posix(), QSettings.IniFormat
+            self.app_dir.joinpath(settings_file).as_posix(), QSettings.Format.IniFormat
         )
         self.settings.sync()
         self.data = DataStore(self.app_dir)
