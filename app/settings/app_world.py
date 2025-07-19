@@ -32,7 +32,6 @@ class AppWorld:
         self.app_dir = Path(
             QStandardPaths.writableLocation(QStandardPaths.StandardLocation.AppConfigLocation)
         )
-        print(self.app_dir)
         self.app_dir.mkdir(exist_ok=True)
         settings_file = f"{self.app_name}.ini"
         self.settings = QSettings(
